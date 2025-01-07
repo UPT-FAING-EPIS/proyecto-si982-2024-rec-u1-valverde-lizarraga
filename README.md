@@ -2,6 +2,30 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17612975)
 # proyecto-formatos-01
 
+# DIAGRAMA DE CASO DE USO
+
+## HU-01
+
+## HU-02
+
+## HU-03
+
+## HU-04
+
+## HU-05
+
+## HU-06
+
+## HU-07
+
+## HU-08
+
+## HU-09
+
+## HU-10
+
+![image](https://github.com/user-attachments/assets/4e2d18a0-9b09-416a-aac6-0415313b29f3)
+
 
 # DIAGRAMA DE SECUENCIA
 ## HU-01
