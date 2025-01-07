@@ -900,7 +900,7 @@ sequenceDiagram
     participant S as Sistema
     participant BD as Base de Datos
     
-    rect 
+    rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA01: Reserva de Aulas
         CE->>S: seleccionarAula(aula)
         CE->>S: definirFechaHora(fecha, hora)
@@ -910,7 +910,7 @@ sequenceDiagram
         S-->>CE: reservaConfirmada
     end
     
-    rect 
+    rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA02: Confirmación de Reserva
         CE->>S: consultarHistorial()
         S->>BD: obtenerReservas()
@@ -918,7 +918,7 @@ sequenceDiagram
         S-->>CE: mostrarDetallesReserva
     end
     
-    rect 
+    rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA03: Conflicto de Reservas
         CE->>S: intentarReserva(aula, fecha)
         S->>BD: verificarDisponibilidad()
@@ -926,7 +926,7 @@ sequenceDiagram
         S-->>CE: mostrarError("Recurso no disponible")
     end
     
-    rect 
+    rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA04: Modificación de Reservas
         CE->>S: editarReserva(id, nuevosDatos)
         S->>BD: validarCambios()
@@ -935,7 +935,7 @@ sequenceDiagram
         S-->>CE: modificaciónConfirmada
     end
     
-    rect 
+    rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA05: Cancelación de Reservas
         CE->>S: cancelarReserva(id)
         S->>BD: eliminarReserva()
@@ -945,10 +945,336 @@ sequenceDiagram
 ```
 ## HU-12: Registro de incidencias de Uso
 
-## HU-13: Configuración de Horarios de clase
+### Diagrama de caso de uso
+```mermaid
+graph TB
+    classDef actor fill:#FFFFFF,stroke:#000000
 
-## HU-14: Consulta de Historial de Reservas
+    user((Usuario))
+    admin((Administrador))
+    sys[Sistema]
+    
+    user -->|Reportar Incidencia| sys
+    user -->|Ver Incidencias| sys
+    admin -->|Gestionar Incidencias| sys
+    admin -->|Cerrar Incidencias| sys
+    admin -->|Ver Historial| sys
+```
+### Diagramas de secuencia
+```mermaid
+sequenceDiagram
+    actor U as Usuario
+    participant S as Sistema
+    actor A as Administrador
+    participant BD as Base de Datos
+    
+    rect rgb(0, 0, 0, 0)
+        Note over U,BD: CA01: Reporte de Incidencias
+        U->>S: reportarIncidencia(descripción)
+        S->>BD: registrarIncidencia()
+        BD-->>S: incidenciaRegistrada
+        S-->>U: confirmarRegistro
+    end
+    
+    rect rgb(0, 0, 0, 0)
+        Note over U,BD: CA02: Notificación al Administrador
+        S->>S: generarNotificación()
+        S->>A: enviarNotificación()
+        A-->>S: confirmarRecepción
+    end
+    
+    rect rgb(0, 0, 0, 0)
+        Note over U,BD: CA03: Visualización de Incidencias
+        A->>S: accederIncidencias()
+        S->>BD: obtenerIncidencias()
+        BD-->>S: listaIncidencias
+        S-->>A: mostrarIncidencias
+    end
+    
+    rect rgb(0, 0, 0, 0)
+        Note over U,BD: CA04: Cierre de Incidencias
+        A->>S: marcarResuelta(id)
+        S->>BD: actualizarEstado("resuelta")
+        BD-->>S: estadoActualizado
+        S-->>A: confirmarCierre
+    end
+    
+    rect rgb(0, 0, 0, 0)
+        Note over U,BD: CA05: Historial de Incidencias
+        A->>S: consultarHistorial()
+        S->>BD: obtenerHistorial()
+        BD-->>S: historialIncidencias
+        S-->>A: mostrarHistorial
+    end
+```
+## **HU-13: Configuración de Horarios de clase**
 
+### Diagrama de Caso de Uso
+```mermaid
+graph TB
+    subgraph "HU-13: Configuración de Horarios de clase"
+        direction TB
+        
+        %% Actores
+        Admin((Administrador<br>Académico))
+        System((Sistema))
+  
+        
+        %% Casos de Uso
+        UC1[Registrar Horarios]
+        UC2[Prevenir Conflictos]
+        UC3[Modificar Horarios]
+        UC4[Consultar Horarios]
+        UC5[Eliminar Horarios]
+        
+        %% Relaciones
+        Admin --> UC1
+        Admin --> UC2
+        Admin --> UC3
+        Admin --> UC4
+        Admin --> UC5
+        
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+        
+    end
+```
+### Diagramas de Secuencia
+
+```mermaid
+%% CA01: Registro de Horarios
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CA01: Registro de Horarios
+    AA->>S: Accede al módulo de configuración
+    AA->>S: Ingresa detalles del horario
+    S->>BD: Verifica disponibilidad
+    BD-->>S: Confirma disponibilidad
+    S->>BD: Almacena horario
+    S-->>AA: Confirma registro exitoso
+
+%% CA02: Prevención de Conflictos
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CA02: Prevención de Conflictos
+    AA->>S: Intenta registrar horario
+    S->>BD: Verifica conflictos existentes
+    BD-->>S: Detecta solapamiento
+    S-->>AA: Muestra mensaje de error
+    S-->>AA: Sugiere horarios alternativos
+
+%% CA03: Modificación de Horarios
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CA03: Modificación de Horarios
+    AA->>S: Selecciona horario a modificar
+    S->>BD: Recupera detalles
+    BD-->>S: Retorna información
+    AA->>S: Edita detalles
+    S->>BD: Actualiza horario
+    S-->>AA: Confirma modificación
+
+%% CA04: Consulta de Horarios
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CA04: Consulta de Horarios
+    AA->>S: Selecciona aula/laboratorio
+    S->>BD: Consulta horarios
+    BD-->>S: Retorna lista
+    S-->>AA: Muestra horarios
+
+%% CA05: Eliminación de Horarios
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CA05: Eliminación de Horarios
+    AA->>S: Selecciona horario a eliminar
+    S->>BD: Verifica dependencias
+    BD-->>S: Confirma eliminación posible
+    AA->>S: Confirma eliminación
+    S->>BD: Elimina horario
+    S-->>AA: Notifica éxito
+
+%% CANF01: Tiempo de Procesamiento
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CANF01: Tiempo de Procesamiento
+    AA->>S: Configura/modifica horario
+    S->>BD: Procesa cambios
+    Note over S,BD: Tiempo máximo: 3 segundos
+    BD-->>S: Confirma cambios
+    S-->>AA: Notifica resultado
+
+%% CANF02: Rendimiento con Múltiples Consultas
+sequenceDiagram
+    actor AA as Administrador Académico
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over AA,BD: CANF02: Rendimiento Múltiple
+    AA->>S: Realiza consulta
+    Note over S: Sistema maneja hasta 500 consultas simultáneas
+    S->>BD: Procesa consultas
+    BD-->>S: Retorna resultados
+    S-->>AA: Muestra información
+```
+## **HU-14: Consulta de Historial de Reservas**
+
+### Diagrama de Caso de Uso
+
+```mermaid
+graph TB
+    subgraph "HU-14: Consulta de Historial de Reservas"
+        direction TB
+        
+        %% Actores
+        Student((Estudiante))
+        Teacher((Docente))
+        Sys((Sistema))
+
+        
+        %% Casos de Uso
+        UC6[Consultar Historial]
+        UC7[Filtrar por Fecha]
+        UC8[Ver Detalles de Reserva]
+        UC9[Ver Recursos Reservados]
+        UC10[Acceder según Rol]
+        
+        %% Relaciones
+        Student --> UC6
+        Student --> UC7
+        Student --> UC8
+        Student --> UC9
+        Student --> UC10
+        
+        Teacher --> UC6
+        Teacher --> UC7
+        Teacher --> UC8
+        Teacher --> UC9
+        Teacher --> UC10
+        
+        UC6 --> Sys
+        UC7 --> Sys
+        UC8 --> Sys
+        UC9 --> Sys
+        UC10 --> Sys
+        
+    end
+```
+### Diagramas de Secuencia
+
+```mermaid
+%% CA01: Consulta de Historial
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA01: Consulta de Historial
+    U->>S: Ingresa código universitario
+    U->>S: Solicita historial
+    S->>BD: Consulta reservas
+    BD-->>S: Retorna lista
+    S-->>U: Muestra historial
+
+%% CA02: Filtro por Fecha
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA02: Filtro por Fecha
+    U->>S: Selecciona rango de fechas
+    S->>BD: Aplica filtro
+    BD-->>S: Retorna resultados filtrados
+    S-->>U: Muestra resultados
+
+%% CA03: Detalle de Reserva
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA03: Detalle de Reserva
+    U->>S: Selecciona reserva
+    S->>BD: Consulta detalles
+    BD-->>S: Retorna información
+    S-->>U: Muestra detalles completos
+
+%% CA04: Recursos Reservados
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA04: Recursos Reservados
+    U->>S: Selecciona reserva
+    S->>BD: Consulta recursos
+    BD-->>S: Retorna lista de recursos
+    S-->>U: Muestra recursos específicos
+
+%% CA05: Acceso por Roles
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant R as Sistema de Roles
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA05: Acceso por Roles
+    U->>S: Accede al historial
+    S->>R: Verifica rol
+    R-->>S: Confirma permisos
+    S->>BD: Consulta reservas permitidas
+    BD-->>S: Retorna datos filtrados
+    S-->>U: Muestra historial según rol
+
+%% CANF01: Tiempo de Respuesta
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CANF01: Tiempo de Respuesta
+    U->>S: Solicita historial
+    Note over S,BD: Tiempo máximo: 2 segundos
+    S->>BD: Consulta datos
+    BD-->>S: Retorna información
+    S-->>U: Muestra resultados
+
+%% CANF02: Seguridad de Datos
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant E as Encriptación
+    participant BD as Base de Datos
+    
+    Note over U,BD: CANF02: Seguridad de Datos
+    U->>S: Envía datos personales
+    S->>E: Encripta datos
+    E->>BD: Almacena datos cifrados
+    BD-->>S: Confirma almacenamiento
+    S-->>U: Confirma operación
+```
 ## HU-15: Verificación de Conflictos de Reserva
 
 ## HU-16: Bloqueo Automático de Recursos No Disponibles
