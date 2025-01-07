@@ -1472,12 +1472,217 @@ sequenceDiagram
     Note over S: Marca clara como "No disponible"
     S-->>U: Muestra estado del recurso
 ```
-## HU-16: Bloqueo Automático de Recursos No Disponibles
+## **HU-16: Bloqueo Automático de Recursos No Disponibles**
 
+### Diagrama de caso de Uso
+```mermaid
+usecaseDiagram
+actor Administrador
+actor Usuario
+actor Sistema
+usecase UC01 "Registrar mantenimiento de recursos"
+usecase UC02 "Visualizar recursos bloqueados"
+usecase UC03 "Alerta automática de bloqueo"
+usecase UC04 "Revertir estado de recurso"
+usecase UC05 "Actualizar estado visible para usuarios"
+
+Administrador --> UC01
+Administrador --> UC04
+Sistema --> UC03
+Sistema --> UC05
+Usuario --> UC02
+```
+### Diagramas de secuencia
+```mermaid
+sequenceDiagram
+    participant A as Administrador
+    participant S as Sistema
+    participant BD as Base de Datos
+    participant U as Usuario
+
+    %% CA01: Registro de Mantenimiento
+    Note over A,U: CA01 - Registro de Mantenimiento
+    A->>S: Marca recurso como "No Disponible"
+    S->>BD: Actualiza estado del recurso
+    S->>S: Bloquea reservas del recurso
+    S-->>A: Confirma bloqueo
+
+    %% CA02: Visualización de Recursos
+    Note over A,U: CA02 - Visualización de Recursos
+    U->>S: Intenta reservar recurso bloqueado
+    S->>BD: Verifica estado del recurso
+    BD-->>S: Retorna estado "No Disponible"
+    S-->>U: Muestra mensaje de no disponibilidad
+
+    %% CA03: Alerta Automática
+    Note over A,U: CA03 - Alerta Automática
+    A->>S: Bloquea recurso
+    S->>S: Genera notificación
+    S->>U: Envía notificación de bloqueo
+    U-->>S: Recibe notificación
+
+    %% CA04: Reversión de Estado
+    Note over A,U: CA04 - Reversión de Estado
+    A->>S: Marca recurso como "Disponible"
+    S->>BD: Actualiza estado del recurso
+    S->>S: Habilita reservas del recurso
+    S-->>A: Confirma habilitación
+
+    %% CA05: Actualización Visible
+    Note over A,U: CA05 - Actualización Visible
+    U->>S: Consulta disponibilidad
+    S->>BD: Obtiene estado actual
+    BD-->>S: Retorna estado
+    S-->>U: Muestra estado actualizado
+```
 ## HU-17: Registro de Usuario
+### Diagrama de caso de uso
+```mermaid
+usecaseDiagram
+actor "Nuevo Usuario" as Usuario
+actor Sistema
+usecase UC01 "Registrar con código universitario"
+usecase UC02 "Validar datos personales"
+usecase UC03 "Confirmación de registro por correo"
+usecase UC04 "Restricciones de contraseña"
+usecase UC05 "Redirección a pantalla de inicio de sesión"
 
-## HU-18: Personalización de Interfaz según Facultad/Carrera
+Usuario --> UC01
+Usuario --> UC02
+Sistema --> UC03
+Usuario --> UC04
+Sistema --> UC05
+```
+### Diagrama de secuencia
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant S as Sistema
+    participant BD as Base de Datos
+    participant E as Email
 
-## HU-19: Aceptación Obligatoria de Normativas de Laboratorio
+    %% CA01: Registro con Código
+    Note over U,E: CA01 - Registro con Código
+    U->>S: Ingresa código y datos
+    S->>BD: Valida código universitario
+    BD-->>S: Confirma validez
+    S-->>U: Permite continuar registro
 
+    %% CA02: Validación de Datos
+    Note over U,E: CA02 - Validación de Datos
+    U->>S: Envía formulario
+    S->>S: Valida campos requeridos
+    S->>BD: Guarda datos validados
+    S-->>U: Muestra confirmación
+
+    %% CA03: Confirmación Email
+    Note over U,E: CA03 - Confirmación Email
+    S->>E: Envía correo de activación
+    E-->>U: Recibe correo
+    U->>S: Activa cuenta
+    S->>BD: Actualiza estado cuenta
+
+    %% CA04: Restricciones Contraseña
+    Note over U,E: CA04 - Restricciones Contraseña
+    U->>S: Ingresa contraseña
+    S->>S: Valida requisitos
+    S-->>U: Muestra validación
+    U->>S: Corrige contraseña
+
+    %% CA05: Redirección Login
+    Note over U,E: CA05 - Redirección Login
+    S->>S: Valida registro completo
+    S-->>U: Redirige a login
+    U->>S: Accede a login
+```
+## **HU-18: Personalización de Interfaz según Facultad/Carrera**
+
+### Diagrama de caso de uso
+```mermaid
+usecaseDiagram
+actor Estudiante
+actor Docente
+actor Sistema
+usecase UC01 "Personalización automática por facultad"
+usecase UC02 "Filtrar recursos por carrera"
+usecase UC03 "Cambiar manualmente de vista"
+usecase UC04 "Guardar preferencias"
+usecase UC05 "Accesos directos personalizados"
+
+Estudiante --> UC01
+Docente --> UC01
+Sistema --> UC02
+Estudiante --> UC03
+Docente --> UC03
+Sistema --> UC04
+Estudiante --> UC05
+Docente --> UC05
+```
+### Diagramas de secuencia
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant S as Sistema
+    participant BD as Base de Datos
+    participant I as Interfaz
+
+    %% CA01: Personalización Automática
+    Note over U,I: CA01 - Personalización Automática
+    U->>S: Inicia sesión
+    S->>BD: Obtiene datos facultad
+    BD-->>S: Retorna configuración
+    S->>I: Adapta interfaz
+    I-->>U: Muestra interfaz personalizada
+
+    %% CA02: Filtrado Recursos
+    Note over U,I: CA02 - Filtrado Recursos
+    S->>BD: Obtiene datos carrera
+    BD-->>S: Retorna recursos relevantes
+    S->>I: Ordena recursos
+    I-->>U: Muestra recursos filtrados
+
+    %% CA03: Cambio Manual Vista
+    Note over U,I: CA03 - Cambio Manual Vista
+    U->>S: Selecciona otra facultad
+    S->>I: Actualiza vista
+    I-->>U: Muestra nueva vista
+    S->>BD: Guarda preferencia temporal
+
+    %% CA04: Guardado Preferencias
+    Note over U,I: CA04 - Guardado Preferencias
+    U->>S: Cierra sesión
+    S->>BD: Guarda preferencias
+    U->>S: Inicia nueva sesión
+    S->>BD: Recupera preferencias
+    BD-->>S: Retorna configuración
+    S->>I: Aplica preferencias
+    I-->>U: Muestra vista personalizada
+
+    %% CA05: Accesos Directos
+    Note over U,I: CA05 - Accesos Directos
+    U->>S: Marca recurso favorito
+    S->>BD: Guarda favorito
+    S->>I: Actualiza panel rápido
+    I-->>U: Muestra accesos directos
+```
+## **HU-19: Aceptación Obligatoria de Normativas de Laboratorio**
+
+### Diagrama de caso de uso
+```mermaid
+usecaseDiagram
+actor Usuario
+actor Sistema
+usecase UC01 "Visualizar reglamento"
+usecase UC02 "Aceptar normativas"
+usecase UC03 "Mostrar normativas específicas por tipo de recurso"
+usecase UC04 "Registrar aceptación"
+usecase UC05 "Recordatorio periódico de aceptación"
+
+Usuario --> UC01
+Usuario --> UC02
+Sistema --> UC03
+Sistema --> UC04
+Sistema --> UC05
+```
+### Diagramas de secuencia
 ## HU-20:
