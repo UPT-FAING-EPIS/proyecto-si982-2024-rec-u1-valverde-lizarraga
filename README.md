@@ -442,6 +442,7 @@ sequenceDiagram
 ```
 ## HU-09
 CA01: Reporte por Periodo
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -451,8 +452,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Consultar datos de uso en el periodo seleccionado
     BaseDatos-->>Sistema: Datos de ocupación y uso
     Sistema-->>Administrador: Generar y mostrar reporte detallado
-
+```
 CA02: Reporte por Recurso
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -462,8 +464,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Consultar ocupación y disponibilidad histórica del recurso
     BaseDatos-->>Sistema: Datos históricos del recurso
     Sistema-->>Administrador: Mostrar reporte de uso del recurso
-
+```
 CA03: Exportación de Reportes
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -473,8 +476,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Preparar datos para exportación
     BaseDatos-->>Sistema: Confirmación de datos procesados
     Sistema-->>Administrador: Descargar archivo exportado
-
+```
 CA04: Visualización Gráfica
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -484,8 +488,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Consultar datos para gráficos
     BaseDatos-->>Sistema: Datos agregados por hora, día y semana
     Sistema-->>Administrador: Mostrar gráficos junto con el reporte
-
+```
 CA05: Comparación entre Periodos
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -495,10 +500,11 @@ sequenceDiagram
     Sistema->>BaseDatos: Consultar datos de uso para ambos periodos
     BaseDatos-->>Sistema: Datos de los dos periodos seleccionados
     Sistema-->>Administrador: Mostrar reporte comparativo con diferencias de uso
-
+```
 Criterios de Aceptación No Funcionales
 
 Rapidez
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -508,8 +514,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Procesar datos para el reporte
     BaseDatos-->>Sistema: Datos procesados en menos de 5 segundos
     Sistema-->>Administrador: Mostrar reporte generado
-
+```
 Exportación Segura
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -519,11 +526,11 @@ sequenceDiagram
     Sistema->>BaseDatos: Generar archivo con datos cifrados
     BaseDatos-->>Sistema: Confirmación de archivo seguro
     Sistema-->>Administrador: Descargar archivo cifrado
-_____
-HU-05
-_____
+```
+## HU-05
 
-CA01: Reserva de Aula Disponible
+### CA01: Reserva de Aula Disponible
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -536,8 +543,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Guardar reserva
     BaseDatos-->>Sistema: Confirmación de reserva
     Sistema-->>Docente: Aula reservada correctamente
-
-CA02: Notificación de Conflicto de Horario
+```
+### CA02: Notificación de Conflicto de Horario
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -547,8 +555,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Verificar disponibilidad en el horario
     BaseDatos-->>Sistema: Conflicto detectado (aula ocupada)
     Sistema-->>Docente: Notificar que el aula no está disponible
-
-CA03: Filtro por Requisitos
+```
+### CA03: Filtro por Requisitos
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -558,8 +567,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Filtrar aulas que cumplen con los requisitos
     BaseDatos-->>Sistema: Lista de aulas filtradas
     Sistema-->>Docente: Mostrar opciones disponibles
-
-CA04: Cancelación de Reserva
+```
+### CA04: Cancelación de Reserva
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -571,8 +581,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Marcar reserva como cancelada
     BaseDatos-->>Sistema: Confirmación de cancelación
     Sistema-->>Docente: Reserva cancelada exitosamente
-
-CA05: Alternativa por Mantenimiento
+```
+### CA05: Alternativa por Mantenimiento
+```mermaid
 sequenceDiagram
     participant Sistema
     participant BaseDatos
@@ -583,9 +594,10 @@ sequenceDiagram
     Sistema->>BaseDatos: Buscar alternativas disponibles
     BaseDatos-->>Sistema: Lista de aulas alternativas
     Sistema-->>Docente: Notificar alternativas disponibles
-
-Criterios de Aceptación No Funcionales
-Alta Disponibilidad
+```
+### Criterios de Aceptación No Funcionales
+#### Alta Disponibilidad
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -595,15 +607,16 @@ sequenceDiagram
     Sistema->>Monitor: Verificar estado de tiempo de actividad
     Monitor-->>Sistema: Garantía de 99.9% de disponibilidad
     Sistema-->>Docente: Operación realizada con éxito
-
-Compatibilidad Móvil
+```
+#### Compatibilidad Móvil
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
 
     Docente->>Sistema: Acceder desde dispositivo móvil
     Sistema-->>Docente: Interfaz completamente funcional en móvil
-
+```
 _____
 HU-06
 _____
