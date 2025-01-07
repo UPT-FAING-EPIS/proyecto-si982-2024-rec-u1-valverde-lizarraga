@@ -1281,7 +1281,154 @@ sequenceDiagram
     S-->>U: Confirma operación
 ```
 ## HU-15: Verificación de Conflictos de Reserva
+### Diagrama de caso de uso
 
+```mermaid
+graph TB
+    subgraph "HU-15: Verificación de Conflictos de Reserva"
+        direction TB
+        
+        %% Actores
+        Student((Estudiante))
+        Teacher((Docente))
+        System((Sistema))
+
+        
+        %% Casos de Uso
+        UC1[Detectar Conflictos]
+        UC2[Sugerir Alternativas]
+        UC3[Visualizar Agenda]
+        UC4[Confirmar Reserva Alternativa]
+        UC5[Enviar Alertas por Email]
+        
+        %% Relaciones
+        Student --> UC1
+        Student --> UC2
+        Student --> UC3
+        Student --> UC4
+        Student --> UC5
+        
+        Teacher --> UC1
+        Teacher --> UC2
+        Teacher --> UC3
+        Teacher --> UC4
+        Teacher --> UC5
+        
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+        
+
+    end
+```
+### Diagramas de secuencia
+
+```mermaid
+%% CA01: Detección de Conflictos de Reserva
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA01: Detección de Conflictos
+    U->>S: Selecciona fecha y recurso
+    U->>S: Intenta confirmar reserva
+    S->>BD: Verifica disponibilidad
+    BD-->>S: Detecta conflicto
+    S-->>U: Muestra alerta de conflicto
+    S-->>U: Indica recurso ocupado
+```
+```mermaid
+%% CA02: Alternativa de Reserva
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA02: Alternativa de Reserva
+    U->>S: Recibe notificación de conflicto
+    S->>BD: Busca alternativas disponibles
+    BD-->>S: Retorna lista de opciones
+    S-->>U: Muestra alternativas disponibles
+    U->>S: Selecciona alternativa
+    S->>BD: Registra nueva selección
+```
+```mermaid
+%% CA03: Visualización de Conflictos
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA03: Visualización de Agenda
+    U->>S: Accede a agenda de recursos
+    U->>S: Selecciona fecha y recurso
+    S->>BD: Consulta estado de recursos
+    BD-->>S: Retorna estado actual
+    S-->>U: Marca recursos reservados en rojo
+    S-->>U: Muestra disponibilidad
+```
+```mermaid
+%% CA04: Confirmación Alternativa
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA04: Confirmación Alternativa
+    U->>S: Selecciona alternativa sugerida
+    S->>BD: Verifica disponibilidad actual
+    BD-->>S: Confirma disponibilidad
+    U->>S: Confirma nueva reserva
+    S->>BD: Registra reserva alternativa
+    S-->>U: Confirma reserva exitosa
+```
+```mermaid
+%% CA05: Alerta por Correo
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    participant E as Sistema de Email
+    
+    Note over U,E: CA05: Alerta por Email
+    U->>S: Genera conflicto de reserva
+    S->>BD: Verifica disponibilidad
+    BD-->>S: Confirma conflicto
+    S->>E: Prepara notificación
+    E->>U: Envía email con disponibilidad
+    S-->>U: Confirma envío de notificación
+```
+```mermaid
+%% CANF01: Tiempo de Verificación
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CANF01: Tiempo de Respuesta
+    U->>S: Envía solicitud de reserva
+    Note over S,BD: Tiempo máximo: 3 segundos
+    S->>BD: Verifica disponibilidad
+    BD-->>S: Retorna resultado
+    S-->>U: Muestra estado
+```
+```mermaid
+%% CANF02: Visualización de Estado
+sequenceDiagram
+    actor U as Usuario (Estudiante/Docente)
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CANF02: Estado del Recurso
+    U->>S: Consulta estado de recurso
+    S->>BD: Verifica estado actual
+    BD-->>S: Retorna información
+    Note over S: Marca clara como "No disponible"
+    S-->>U: Muestra estado del recurso
+```
 ## HU-16: Bloqueo Automático de Recursos No Disponibles
 
 ## HU-17: Registro de Usuario
