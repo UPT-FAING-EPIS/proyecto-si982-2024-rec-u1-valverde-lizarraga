@@ -878,3 +878,38 @@ sequenceDiagram
     SSO-->>Sistema: Autenticación exitosa (compatible)
     Sistema-->>Usuario: Acceso permitido
 ```
+## **HU-11: Reserva de Recursos para Eventos Especiales**
+
+### Diagramas de Caso de Uso
+```mermaid
+graph TB
+    classDef actor fill:#FFFFFF,stroke:#000000
+
+    actor((Coordinador<br>Eventos))
+    sys[Sistema]
+    
+    actor -->|Realizar Reserva| sys
+    actor -->|Verificar Historial| sys
+    actor -->|Modificar Reserva| sys
+    actor -->|Cancelar Reserva| sys
+```
+### Diagramas de Secuencia
+
+
+## HU-12: Registro de incidencias de Uso
+
+## HU-13: Configuración de Horarios de clase
+
+## HU-14: Consulta de Historial de Reservas
+
+## HU-15: Verificación de Conflictos de Reserva
+
+## HU-16: Bloqueo Automático de Recursos No Disponibles
+
+## HU-17: Registro de Usuario
+
+## HU-18: Personalización de Interfaz según Facultad/Carrera
+
+## HU-19: Aceptación Obligatoria de Normativas de Laboratorio
+
+## HU-20:
