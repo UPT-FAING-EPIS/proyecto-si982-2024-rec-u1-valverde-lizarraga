@@ -910,7 +910,7 @@ sequenceDiagram
         S-->>CE: reservaConfirmada
     end
     
-    rect rgb(220, 240, 200)
+    rect 
         Note over CE,BD: CA02: Confirmación de Reserva
         CE->>S: consultarHistorial()
         S->>BD: obtenerReservas()
@@ -918,7 +918,7 @@ sequenceDiagram
         S-->>CE: mostrarDetallesReserva
     end
     
-    rect rgb(240, 220, 200)
+    rect 
         Note over CE,BD: CA03: Conflicto de Reservas
         CE->>S: intentarReserva(aula, fecha)
         S->>BD: verificarDisponibilidad()
@@ -926,7 +926,7 @@ sequenceDiagram
         S-->>CE: mostrarError("Recurso no disponible")
     end
     
-    rect rgb(240, 200, 220)
+    rect 
         Note over CE,BD: CA04: Modificación de Reservas
         CE->>S: editarReserva(id, nuevosDatos)
         S->>BD: validarCambios()
@@ -935,7 +935,7 @@ sequenceDiagram
         S-->>CE: modificaciónConfirmada
     end
     
-    rect rgb(200, 240, 220)
+    rect 
         Note over CE,BD: CA05: Cancelación de Reservas
         CE->>S: cancelarReserva(id)
         S->>BD: eliminarReserva()
