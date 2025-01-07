@@ -6,15 +6,27 @@
 
 ## HU-01
 
+![image](https://github.com/user-attachments/assets/a946874c-5daf-489d-8ec9-74d796457215)
+
 ## HU-02
+
+![image](https://github.com/user-attachments/assets/25cfb7f0-c976-4e54-ba7c-fb88175257c4)
 
 ## HU-03
 
+![image](https://github.com/user-attachments/assets/b435ffdf-9fdb-4e40-9ea3-3ea384892c09)
+
 ## HU-04
+
+![image](https://github.com/user-attachments/assets/f5ff2e86-089d-49df-8219-ae0d76bba328)
 
 ## HU-05
 
+![image](https://github.com/user-attachments/assets/48373238-8903-4621-87ed-334b4850011d)
+
 ## HU-06
+
+![image](https://github.com/user-attachments/assets/1d88df42-d04c-4d42-92da-b172a7e43cc1)
 
 ## HU-07
 
