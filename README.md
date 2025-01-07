@@ -1058,7 +1058,8 @@ sequenceDiagram
     BD-->>S: Confirma disponibilidad
     S->>BD: Almacena horario
     S-->>AA: Confirma registro exitoso
-
+```
+```mermaid
 %% CA02: Prevención de Conflictos
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1071,7 +1072,8 @@ sequenceDiagram
     BD-->>S: Detecta solapamiento
     S-->>AA: Muestra mensaje de error
     S-->>AA: Sugiere horarios alternativos
-
+```
+```mermaid
 %% CA03: Modificación de Horarios
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1085,7 +1087,8 @@ sequenceDiagram
     AA->>S: Edita detalles
     S->>BD: Actualiza horario
     S-->>AA: Confirma modificación
-
+```
+```mermaid
 %% CA04: Consulta de Horarios
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1097,7 +1100,8 @@ sequenceDiagram
     S->>BD: Consulta horarios
     BD-->>S: Retorna lista
     S-->>AA: Muestra horarios
-
+```
+```mermaid
 %% CA05: Eliminación de Horarios
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1111,7 +1115,8 @@ sequenceDiagram
     AA->>S: Confirma eliminación
     S->>BD: Elimina horario
     S-->>AA: Notifica éxito
-
+```
+```mermaid
 %% CANF01: Tiempo de Procesamiento
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1124,7 +1129,8 @@ sequenceDiagram
     Note over S,BD: Tiempo máximo: 3 segundos
     BD-->>S: Confirma cambios
     S-->>AA: Notifica resultado
-
+```
+```mermaid
 %% CANF02: Rendimiento con Múltiples Consultas
 sequenceDiagram
     actor AA as Administrador Académico
@@ -1184,7 +1190,6 @@ graph TB
 ### Diagramas de Secuencia
 
 ```mermaid
-%% CA01: Consulta de Historial
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1196,8 +1201,8 @@ sequenceDiagram
     S->>BD: Consulta reservas
     BD-->>S: Retorna lista
     S-->>U: Muestra historial
-
-%% CA02: Filtro por Fecha
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1208,8 +1213,8 @@ sequenceDiagram
     S->>BD: Aplica filtro
     BD-->>S: Retorna resultados filtrados
     S-->>U: Muestra resultados
-
-%% CA03: Detalle de Reserva
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1220,8 +1225,8 @@ sequenceDiagram
     S->>BD: Consulta detalles
     BD-->>S: Retorna información
     S-->>U: Muestra detalles completos
-
-%% CA04: Recursos Reservados
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1232,8 +1237,8 @@ sequenceDiagram
     S->>BD: Consulta recursos
     BD-->>S: Retorna lista de recursos
     S-->>U: Muestra recursos específicos
-
-%% CA05: Acceso por Roles
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1247,8 +1252,8 @@ sequenceDiagram
     S->>BD: Consulta reservas permitidas
     BD-->>S: Retorna datos filtrados
     S-->>U: Muestra historial según rol
-
-%% CANF01: Tiempo de Respuesta
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
@@ -1260,8 +1265,8 @@ sequenceDiagram
     S->>BD: Consulta datos
     BD-->>S: Retorna información
     S-->>U: Muestra resultados
-
-%% CANF02: Seguridad de Datos
+```
+```mermaid
 sequenceDiagram
     actor U as Usuario (Estudiante/Docente)
     participant S as Sistema
