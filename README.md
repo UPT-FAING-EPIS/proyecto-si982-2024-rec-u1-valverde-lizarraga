@@ -900,7 +900,7 @@ sequenceDiagram
     participant S as Sistema
     participant BD as Base de Datos
     
-    rect rgb(200, 220, 240)
+    rect 
         Note over CE,BD: CA01: Reserva de Aulas
         CE->>S: seleccionarAula(aula)
         CE->>S: definirFechaHora(fecha, hora)
