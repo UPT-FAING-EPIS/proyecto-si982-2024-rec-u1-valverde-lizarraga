@@ -1476,21 +1476,33 @@ sequenceDiagram
 
 ### Diagrama de caso de Uso
 ```mermaid
-usecaseDiagram
-actor Administrador
-actor Usuario
-actor Sistema
-usecase UC01 "Registrar mantenimiento de recursos"
-usecase UC02 "Visualizar recursos bloqueados"
-usecase UC03 "Alerta automática de bloqueo"
-usecase UC04 "Revertir estado de recurso"
-usecase UC05 "Actualizar estado visible para usuarios"
+graph TB
+    subgraph "HU-16: Bloqueo Automático de Recursos No Disponibles"
+        direction TB
+        
+        %% Actores
+        Admin((Administrador))
+        User((Usuario))
+        System((Sistema))
 
-Administrador --> UC01
-Administrador --> UC04
-Sistema --> UC03
-Sistema --> UC05
-Usuario --> UC02
+        %% Casos de Uso
+        UC1[Registrar Mantenimiento de Recursos]
+        UC2[Visualizar Recursos Bloqueados]
+        UC3[Alerta Automática de Bloqueo]
+        UC4[Revertir Estado de Recurso]
+        UC5[Actualizar Estado Visible para Usuarios]
+        
+        %% Relaciones
+        Admin --> UC1
+        Admin --> UC4
+        User --> UC2
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+    end
+
 ```
 ### Diagramas de secuencia
 ```mermaid
@@ -1538,20 +1550,32 @@ sequenceDiagram
 ## HU-17: Registro de Usuario
 ### Diagrama de caso de uso
 ```mermaid
-usecaseDiagram
-actor "Nuevo Usuario" as Usuario
-actor Sistema
-usecase UC01 "Registrar con código universitario"
-usecase UC02 "Validar datos personales"
-usecase UC03 "Confirmación de registro por correo"
-usecase UC04 "Restricciones de contraseña"
-usecase UC05 "Redirección a pantalla de inicio de sesión"
+graph TB
+    subgraph "HU-17: Registro de Usuario"
+        direction TB
+        
+        %% Actores
+        NewUser((Nuevo Usuario))
+        System((Sistema))
 
-Usuario --> UC01
-Usuario --> UC02
-Sistema --> UC03
-Usuario --> UC04
-Sistema --> UC05
+        %% Casos de Uso
+        UC1[Registrar con Código Universitario]
+        UC2[Validar Datos Personales]
+        UC3[Confirmación de Registro por Correo]
+        UC4[Restricciones de Contraseña]
+        UC5[Redirección a Pantalla de Inicio de Sesión]
+        
+        %% Relaciones
+        NewUser --> UC1
+        NewUser --> UC2
+        NewUser --> UC4
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+    end
+
 ```
 ### Diagrama de secuencia
 ```mermaid
@@ -1599,24 +1623,42 @@ sequenceDiagram
 
 ### Diagrama de caso de uso
 ```mermaid
-usecaseDiagram
-actor Estudiante
-actor Docente
-actor Sistema
-usecase UC01 "Personalización automática por facultad"
-usecase UC02 "Filtrar recursos por carrera"
-usecase UC03 "Cambiar manualmente de vista"
-usecase UC04 "Guardar preferencias"
-usecase UC05 "Accesos directos personalizados"
+graph TB
+    subgraph "HU-18: Personalización de Interfaz según Facultad/Carrera"
+        direction TB
+        
+        %% Actores
+        Student((Estudiante))
+        Teacher((Docente))
+        System((Sistema))
 
-Estudiante --> UC01
-Docente --> UC01
-Sistema --> UC02
-Estudiante --> UC03
-Docente --> UC03
-Sistema --> UC04
-Estudiante --> UC05
-Docente --> UC05
+        %% Casos de Uso
+        UC1[Personalización Automática por Facultad]
+        UC2[Filtrar Recursos por Carrera]
+        UC3[Cambiar Manualmente de Vista]
+        UC4[Guardar Preferencias]
+        UC5[Accesos Directos Personalizados]
+        
+        %% Relaciones
+        Student --> UC1
+        Student --> UC2
+        Student --> UC3
+        Student --> UC4
+        Student --> UC5
+        
+        Teacher --> UC1
+        Teacher --> UC2
+        Teacher --> UC3
+        Teacher --> UC4
+        Teacher --> UC5
+
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+    end
+
 ```
 ### Diagramas de secuencia
 ```mermaid
@@ -1669,20 +1711,31 @@ sequenceDiagram
 
 ### Diagrama de caso de uso
 ```mermaid
-usecaseDiagram
-actor Usuario
-actor Sistema
-usecase UC01 "Visualizar reglamento"
-usecase UC02 "Aceptar normativas"
-usecase UC03 "Mostrar normativas específicas por tipo de recurso"
-usecase UC04 "Registrar aceptación"
-usecase UC05 "Recordatorio periódico de aceptación"
+graph TB
+    subgraph "HU-19: Aceptación Obligatoria de Normativas de Laboratorio"
+        direction TB
+        
+        %% Actores
+        User((Usuario))
+        System((Sistema))
 
-Usuario --> UC01
-Usuario --> UC02
-Sistema --> UC03
-Sistema --> UC04
-Sistema --> UC05
+        %% Casos de Uso
+        UC1[Visualizar Reglamento]
+        UC2[Aceptar Normativas]
+        UC3[Mostrar Normativas Específicas por Recurso]
+        UC4[Registrar Aceptación]
+        UC5[Recordatorio Periódico]
+        
+        %% Relaciones
+        User --> UC1
+        User --> UC2
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+    end
+
 ```
 ### Diagramas de secuencia
 ## HU-20:
