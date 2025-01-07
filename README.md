@@ -18,9 +18,16 @@
 
 ## HU-07
 
+![image](https://github.com/user-attachments/assets/292b9e8c-2aa9-42f2-95a9-70dcba610bb7)
+
 ## HU-08
 
+![image](https://github.com/user-attachments/assets/6f650f48-c2f5-46ff-bb87-2b4445bb3a10)
+
 ## HU-09
+
+![image](https://github.com/user-attachments/assets/3ff7582a-b3a7-48cf-8de1-e80305dd1900)
+
 
 ## HU-10
 
