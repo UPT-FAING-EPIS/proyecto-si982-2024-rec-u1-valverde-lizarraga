@@ -894,8 +894,55 @@ graph TB
     actor -->|Cancelar Reserva| sys
 ```
 ### Diagramas de Secuencia
-
-
+```mermaid
+sequenceDiagram
+    actor CE as Coordinador Eventos
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    rect rgb(200, 220, 240)
+        Note over CE,BD: CA01: Reserva de Aulas
+        CE->>S: seleccionarAula(aula)
+        CE->>S: definirFechaHora(fecha, hora)
+        S->>BD: verificarDisponibilidad()
+        BD-->>S: disponible
+        S->>BD: registrarReserva()
+        S-->>CE: reservaConfirmada
+    end
+    
+    rect rgb(220, 240, 200)
+        Note over CE,BD: CA02: Confirmación de Reserva
+        CE->>S: consultarHistorial()
+        S->>BD: obtenerReservas()
+        BD-->>S: listaReservas
+        S-->>CE: mostrarDetallesReserva
+    end
+    
+    rect rgb(240, 220, 200)
+        Note over CE,BD: CA03: Conflicto de Reservas
+        CE->>S: intentarReserva(aula, fecha)
+        S->>BD: verificarDisponibilidad()
+        BD-->>S: conflictoDetectado
+        S-->>CE: mostrarError("Recurso no disponible")
+    end
+    
+    rect rgb(240, 200, 220)
+        Note over CE,BD: CA04: Modificación de Reservas
+        CE->>S: editarReserva(id, nuevosDatos)
+        S->>BD: validarCambios()
+        BD-->>S: cambiosVálidos
+        S->>BD: actualizarReserva()
+        S-->>CE: modificaciónConfirmada
+    end
+    
+    rect rgb(200, 240, 220)
+        Note over CE,BD: CA05: Cancelación de Reservas
+        CE->>S: cancelarReserva(id)
+        S->>BD: eliminarReserva()
+        BD-->>S: reservaEliminada
+        S-->>CE: cancelaciónConfirmada
+    end
+```
 ## HU-12: Registro de incidencias de Uso
 
 ## HU-13: Configuración de Horarios de clase
