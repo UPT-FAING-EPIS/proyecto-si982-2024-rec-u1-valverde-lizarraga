@@ -90,7 +90,175 @@ sequenceDiagram
     Usuario->>Sistema: Navegar por la plataforma
     Sistema-->>Usuario: Interfaz accesible y compatible con lectores de pantalla
 ```
+## HU-02
+### CA01: Notificación de Recordatorio
+```mermaid
+sequenceDiagram
+    participant Sistema
+    participant BaseDatos
+    participant Estudiante
 
+    Sistema->>BaseDatos: Consultar reservas próximas
+    BaseDatos-->>Sistema: Reservas con recordatorio pendiente
+    Sistema-->>Estudiante: Enviar notificación de recordatorio (30 minutos antes)
+```
+### CA02: Notificación de Cambios
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+    participant Estudiante
+
+    Administrador->>Sistema: Modificar una reserva
+    Sistema->>BaseDatos: Registrar cambios de la reserva
+    BaseDatos-->>Sistema: Confirmación de registro
+    Sistema-->>Estudiante: Enviar notificación con los detalles de la modificación
+```
+### CA03: Notificación de Cancelación
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+    participant Estudiante
+
+    Administrador->>Sistema: Cancelar una reserva
+    Sistema->>BaseDatos: Registrar cancelación
+    BaseDatos-->>Sistema: Confirmación de registro
+    Sistema-->>Estudiante: Enviar mensaje con razones y alternativas sugeridas
+```
+### CA04: Configuración de Notificaciones
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Configurar preferencias de notificación
+    Sistema->>BaseDatos: Actualizar configuración de notificaciones
+    BaseDatos-->>Sistema: Confirmación de actualización
+    Sistema-->>Estudiante: Confirmación de preferencias actualizadas
+```
+### CA05: Consulta de Notificaciones Pasadas
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Consultar historial de notificaciones
+    Sistema->>BaseDatos: Obtener registro de notificaciones
+    BaseDatos-->>Sistema: Lista de notificaciones recibidas
+    Sistema-->>Estudiante: Mostrar historial de notificaciones
+```
+### Criterios de Aceptación No Funcionales
+
+#### Consistencia
+```mermaid
+sequenceDiagram
+    participant Sistema
+    participant BaseDatos
+    participant Estudiante
+
+    Sistema->>BaseDatos: Detectar evento relevante (inicio próximo o modificación)
+    BaseDatos-->>Sistema: Detalles del evento
+    Sistema-->>Estudiante: Enviar notificación dentro de 1 minuto
+```
+#### Multicanal
+```mermaid
+sequenceDiagram
+    participant Sistema
+    participant Estudiante
+
+    Sistema->>Estudiante: Enviar notificación vía correo electrónico
+    Sistema->>Estudiante: Enviar notificación vía SMS
+    Sistema->>Estudiante: Enviar notificación vía push
+```
+## HU-03
+CA01: Búsqueda por Horario
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Ingresar rango de horario
+    Sistema->>BaseDatos: Consultar disponibilidad de recursos en el horario
+    BaseDatos-->>Sistema: Lista de recursos disponibles
+    Sistema-->>Estudiante: Mostrar recursos disponibles
+```
+CA02: Filtro por Características
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Aplicar filtros de características
+    Sistema->>BaseDatos: Consultar recursos que cumplen los filtros
+    BaseDatos-->>Sistema: Lista de recursos filtrados
+    Sistema-->>Estudiante: Mostrar recursos que cumplen con los filtros
+```
+CA03: Notificación de Recursos Ocupados
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Intentar reservar un recurso ocupado
+    Sistema->>BaseDatos: Consultar disponibilidad futura del recurso
+    BaseDatos-->>Sistema: Horarios disponibles del recurso
+    Sistema-->>Estudiante: Mostrar notificación y horarios en que estará libre
+```
+CA04: Consulta de Ocupación Futura
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Seleccionar un recurso
+    Sistema->>BaseDatos: Consultar ocupación del recurso para los próximos 7 días
+    BaseDatos-->>Sistema: Horarios ocupados del recurso
+    Sistema-->>Estudiante: Mostrar ocupación futura
+```
+CA05: Compatibilidad con Software Requerido
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Ingresar el nombre del software requerido
+    Sistema->>BaseDatos: Buscar laboratorios con el software específico
+    BaseDatos-->>Sistema: Lista de laboratorios compatibles
+    Sistema-->>Estudiante: Mostrar laboratorios con el software requerido
+```
+Criterios de Aceptación No Funcionales
+
+Eficiencia en Búsqueda
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Realizar consulta con filtros
+    Sistema->>BaseDatos: Procesar búsqueda
+    BaseDatos-->>Sistema: Resultados de la búsqueda (en menos de 3 segundos)
+    Sistema-->>Estudiante: Mostrar resultados
+```
+Interfaz Amigable
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+
+    Estudiante->>Sistema: Interactuar con filtros de búsqueda
+    Sistema-->>Estudiante: Mostrar opciones de filtros claros e intuitivos
+```
 ## HU-04
 ### CA01: Disponibilidad de Computadoras
 ```mermaid
