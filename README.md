@@ -4,6 +4,93 @@
 
 
 # DIAGRAMA DE SECUENCIA
+## HU-01
+### CA01: Visualización de Reservas Activas
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Acceder a perfil
+    Sistema->>BaseDatos: Consultar reservas activas del estudiante
+    BaseDatos-->>Sistema: Lista de reservas activas
+    Sistema-->>Estudiante: Mostrar reservas activas
+```
+### CA02: Acceso al Historial de Reservas
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Acceder al historial
+    Sistema->>BaseDatos: Consultar reservas pasadas del estudiante
+    BaseDatos-->>Sistema: Lista de reservas anteriores
+    Sistema-->>Estudiante: Mostrar historial de reservas
+```
+### CA03: Visualización de Detalles
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Seleccionar una reserva
+    Sistema->>BaseDatos: Consultar detalles de la reserva
+    BaseDatos-->>Sistema: Detalles del horario, lugar y recurso
+    Sistema-->>Estudiante: Mostrar detalles de la reserva
+```
+### CA04: Modificación de Reserva
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Acceder a los detalles de la reserva
+    Sistema->>BaseDatos: Consultar políticas de modificación
+    BaseDatos-->>Sistema: Políticas permitidas
+    Estudiante->>Sistema: Modificar horario o cancelar
+    Sistema->>BaseDatos: Actualizar reserva
+    BaseDatos-->>Sistema: Confirmación de modificación
+    Sistema-->>Estudiante: Notificación de cambio exitoso
+```
+### CA05: Registro de Modificaciones
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Consultar historial de reservas
+    Sistema->>BaseDatos: Obtener registro de modificaciones
+    BaseDatos-->>Sistema: Detalles de modificaciones (usuario y razón)
+    Sistema-->>Estudiante: Mostrar historial con modificaciones
+```
+### Criterios de Aceptación No Funcionales
+#### Tiempo de Carga
+```mermaid
+sequenceDiagram
+    participant Estudiante
+    participant Sistema
+    participant BaseDatos
+
+    Estudiante->>Sistema: Acceder a "Mis Reservas"
+    Sistema->>BaseDatos: Consultar datos de reservas
+    BaseDatos-->>Sistema: Lista de reservas
+    Sistema-->>Estudiante: Mostrar reservas en menos de 1 segundo
+```
+#### Accesibilidad
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Sistema
+
+    Usuario->>Sistema: Navegar por la plataforma
+    Sistema-->>Usuario: Interfaz accesible y compatible con lectores de pantalla
+```
+
 ## HU-04
 ### CA01: Disponibilidad de Computadoras
 ```mermaid
@@ -97,3 +184,4 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de almacenamiento seguro
     Sistema-->>Estudiante: Confirmar datos protegidos
 ```
+
