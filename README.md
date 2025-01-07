@@ -352,181 +352,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de almacenamiento seguro
     Sistema-->>Estudiante: Confirmar datos protegidos
 ```
-## HU-07
 
-### CA01: Asignación de Computadoras Específicas
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Seleccionar aula completa reservada
-    Sistema->>BaseDatos: Obtener lista de recursos del aula
-    BaseDatos-->>Sistema: Lista de computadoras disponibles
-    Docente->>Sistema: Asignar computadoras a estudiantes
-    Sistema->>BaseDatos: Guardar asignaciones realizadas
-    BaseDatos-->>Sistema: Confirmación de asignación
-```
-### CA02: Modificación de Asignaciones
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Acceder a asignaciones realizadas
-    Sistema->>BaseDatos: Consultar asignaciones actuales
-    BaseDatos-->>Sistema: Detalles de las asignaciones
-    Docente->>Sistema: Modificar asignaciones
-    Sistema->>BaseDatos: Actualizar datos de asignación
-    BaseDatos-->>Sistema: Confirmación de actualización
-```
-### CA03: Verificación de Disponibilidad
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Asignar recursos para la clase
-    Sistema->>BaseDatos: Consultar disponibilidad de los recursos seleccionados
-    BaseDatos-->>Sistema: Estado de disponibilidad (ocupado o libre)
-    Sistema-->>Docente: Notificar si algún recurso no está disponible
-```
-### CA04: Liberación de Recursos No Utilizados
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Seleccionar recursos no utilizados
-    Sistema->>BaseDatos: Marcar recursos como liberados
-    BaseDatos-->>Sistema: Confirmación de liberación
-    Sistema-->>Docente: Recursos liberados correctamente
-```
-### CA05: Reporte de Asignaciones
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Acceder a la reserva
-    Sistema->>BaseDatos: Consultar reporte de asignaciones
-    BaseDatos-->>Sistema: Detalles de recursos asignados
-    Sistema-->>Docente: Mostrar reporte detallado
-```
-### Criterios de Aceptación No Funcionales
-
-#### Persistencia de Datos
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-    participant BaseDatos
-
-    Docente->>Sistema: Guardar asignaciones de recursos
-    Sistema->>BaseDatos: Registrar asignaciones en tiempo real
-    BaseDatos-->>Sistema: Confirmación de datos almacenados sin pérdida
-```
-#### Interfaz Adaptable
-```mermaid
-sequenceDiagram
-    participant Docente
-    participant Sistema
-
-    Docente->>Sistema: Acceder desde un dispositivo (PC, móvil, tableta)
-    Sistema-->>Docente: Mostrar funcionalidad optimizada para el dispositivo utilizado
-```
-## HU-09
-CA01: Reporte por Periodo
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Ingresar rango de fechas
-    Sistema->>BaseDatos: Consultar datos de uso en el periodo seleccionado
-    BaseDatos-->>Sistema: Datos de ocupación y uso
-    Sistema-->>Administrador: Generar y mostrar reporte detallado
-```
-CA02: Reporte por Recurso
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Seleccionar aula o laboratorio
-    Sistema->>BaseDatos: Consultar ocupación y disponibilidad histórica del recurso
-    BaseDatos-->>Sistema: Datos históricos del recurso
-    Sistema-->>Administrador: Mostrar reporte de uso del recurso
-```
-CA03: Exportación de Reportes
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Generar reporte y seleccionar formato (PDF o Excel)
-    Sistema->>BaseDatos: Preparar datos para exportación
-    BaseDatos-->>Sistema: Confirmación de datos procesados
-    Sistema-->>Administrador: Descargar archivo exportado
-```
-CA04: Visualización Gráfica
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Generar reporte con visualización gráfica
-    Sistema->>BaseDatos: Consultar datos para gráficos
-    BaseDatos-->>Sistema: Datos agregados por hora, día y semana
-    Sistema-->>Administrador: Mostrar gráficos junto con el reporte
-```
-CA05: Comparación entre Periodos
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Seleccionar dos periodos para comparar
-    Sistema->>BaseDatos: Consultar datos de uso para ambos periodos
-    BaseDatos-->>Sistema: Datos de los dos periodos seleccionados
-    Sistema-->>Administrador: Mostrar reporte comparativo con diferencias de uso
-```
-Criterios de Aceptación No Funcionales
-
-Rapidez
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Seleccionar rango de fechas y tipo de reporte
-    Sistema->>BaseDatos: Procesar datos para el reporte
-    BaseDatos-->>Sistema: Datos procesados en menos de 5 segundos
-    Sistema-->>Administrador: Mostrar reporte generado
-```
-Exportación Segura
-```mermaid
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Exportar reporte en formato PDF o Excel
-    Sistema->>BaseDatos: Generar archivo con datos cifrados
-    BaseDatos-->>Sistema: Confirmación de archivo seguro
-    Sistema-->>Administrador: Descargar archivo cifrado
-```
 ## HU-05
 
 ### CA01: Reserva de Aula Disponible
@@ -617,11 +443,11 @@ sequenceDiagram
     Docente->>Sistema: Acceder desde dispositivo móvil
     Sistema-->>Docente: Interfaz completamente funcional en móvil
 ```
-_____
-HU-06
-_____
 
-CA01: Visualización de Reservas
+## HU-06
+
+### CA01: Visualización de Reservas
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -631,8 +457,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Consultar reservas activas, pasadas y futuras
     BaseDatos-->>Sistema: Enviar detalles de reservas
     Sistema-->>Docente: Mostrar lista de reservas
-
-CA02: Edición o Eliminación de Reservas Conflictivas
+```
+### CA02: Edición o Eliminación de Reservas Conflictivas
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -644,8 +471,9 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de cambio
     Sistema->>Usuario: Notificar a los usuarios afectados
     Sistema-->>Docente: Cambios realizados exitosamente
-
-CA03: Bloqueo de Recursos Fuera de Servicio
+```
+### CA03: Bloqueo de Recursos Fuera de Servicio
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -655,8 +483,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Actualizar estado del recurso a “No disponible”
     BaseDatos-->>Sistema: Confirmación de bloqueo
     Sistema-->>Docente: Recurso marcado como fuera de servicio
-
-CA04: Marcado de Reservas No Utilizadas
+```
+### CA04: Marcado de Reservas No Utilizadas
+```mermaid
 sequenceDiagram
     participant Sistema
     participant BaseDatos
@@ -665,8 +494,9 @@ sequenceDiagram
     BaseDatos-->>Sistema: Lista de reservas no utilizadas
     Sistema->>BaseDatos: Marcar reservas como “No utilizadas”
     BaseDatos-->>Sistema: Confirmación de registro del evento
-
-CA05: Aplicación de Políticas de Prioridad
+```
+### CA05: Aplicación de Políticas de Prioridad
+```mermaid
 sequenceDiagram
     participant Docente
     participant Sistema
@@ -677,9 +507,10 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de políticas guardadas
     Sistema-->>Docente: Políticas aplicadas exitosamente
     Sistema->>BaseDatos: Aplicar políticas durante reservas en alta demanda
-
-Criterios de Aceptación No Funcionales
-Escalabilidad
+```
+### Criterios de Aceptación No Funcionales
+#### Escalabilidad
+```mermaid
 sequenceDiagram
     participant Sistema
     participant BaseDatos
@@ -687,8 +518,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Manejar 500 reservas simultáneas
     BaseDatos-->>Sistema: Procesar solicitudes sin retrasos
     Sistema-->>Sistema: Mantener rendimiento óptimo
-
-Auditoría
+```
+#### Auditoría
+```mermaid
 sequenceDiagram
     participant Administrador
     participant Sistema
@@ -698,7 +530,182 @@ sequenceDiagram
     Sistema->>BaseDatos: Registrar acción con fecha, hora y usuario
     BaseDatos-->>Sistema: Confirmación de registro
     Sistema-->>Administrador: Acción registrada exitosamente
+```
+## HU-07
 
+### CA01: Asignación de Computadoras Específicas
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Seleccionar aula completa reservada
+    Sistema->>BaseDatos: Obtener lista de recursos del aula
+    BaseDatos-->>Sistema: Lista de computadoras disponibles
+    Docente->>Sistema: Asignar computadoras a estudiantes
+    Sistema->>BaseDatos: Guardar asignaciones realizadas
+    BaseDatos-->>Sistema: Confirmación de asignación
+```
+### CA02: Modificación de Asignaciones
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Acceder a asignaciones realizadas
+    Sistema->>BaseDatos: Consultar asignaciones actuales
+    BaseDatos-->>Sistema: Detalles de las asignaciones
+    Docente->>Sistema: Modificar asignaciones
+    Sistema->>BaseDatos: Actualizar datos de asignación
+    BaseDatos-->>Sistema: Confirmación de actualización
+```
+### CA03: Verificación de Disponibilidad
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Asignar recursos para la clase
+    Sistema->>BaseDatos: Consultar disponibilidad de los recursos seleccionados
+    BaseDatos-->>Sistema: Estado de disponibilidad (ocupado o libre)
+    Sistema-->>Docente: Notificar si algún recurso no está disponible
+```
+### CA04: Liberación de Recursos No Utilizados
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Seleccionar recursos no utilizados
+    Sistema->>BaseDatos: Marcar recursos como liberados
+    BaseDatos-->>Sistema: Confirmación de liberación
+    Sistema-->>Docente: Recursos liberados correctamente
+```
+### CA05: Reporte de Asignaciones
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Acceder a la reserva
+    Sistema->>BaseDatos: Consultar reporte de asignaciones
+    BaseDatos-->>Sistema: Detalles de recursos asignados
+    Sistema-->>Docente: Mostrar reporte detallado
+```
+### Criterios de Aceptación No Funcionales
+
+#### Persistencia de Datos
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+    participant BaseDatos
+
+    Docente->>Sistema: Guardar asignaciones de recursos
+    Sistema->>BaseDatos: Registrar asignaciones en tiempo real
+    BaseDatos-->>Sistema: Confirmación de datos almacenados sin pérdida
+```
+#### Interfaz Adaptable
+```mermaid
+sequenceDiagram
+    participant Docente
+    participant Sistema
+
+    Docente->>Sistema: Acceder desde un dispositivo (PC, móvil, tableta)
+    Sistema-->>Docente: Mostrar funcionalidad optimizada para el dispositivo utilizado
+```
+## HU-09
+### CA01: Reporte por Periodo
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Ingresar rango de fechas
+    Sistema->>BaseDatos: Consultar datos de uso en el periodo seleccionado
+    BaseDatos-->>Sistema: Datos de ocupación y uso
+    Sistema-->>Administrador: Generar y mostrar reporte detallado
+```
+CA02: Reporte por Recurso
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Seleccionar aula o laboratorio
+    Sistema->>BaseDatos: Consultar ocupación y disponibilidad histórica del recurso
+    BaseDatos-->>Sistema: Datos históricos del recurso
+    Sistema-->>Administrador: Mostrar reporte de uso del recurso
+```
+CA03: Exportación de Reportes
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Generar reporte y seleccionar formato (PDF o Excel)
+    Sistema->>BaseDatos: Preparar datos para exportación
+    BaseDatos-->>Sistema: Confirmación de datos procesados
+    Sistema-->>Administrador: Descargar archivo exportado
+```
+CA04: Visualización Gráfica
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Generar reporte con visualización gráfica
+    Sistema->>BaseDatos: Consultar datos para gráficos
+    BaseDatos-->>Sistema: Datos agregados por hora, día y semana
+    Sistema-->>Administrador: Mostrar gráficos junto con el reporte
+```
+CA05: Comparación entre Periodos
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Seleccionar dos periodos para comparar
+    Sistema->>BaseDatos: Consultar datos de uso para ambos periodos
+    BaseDatos-->>Sistema: Datos de los dos periodos seleccionados
+    Sistema-->>Administrador: Mostrar reporte comparativo con diferencias de uso
+```
+Criterios de Aceptación No Funcionales
+
+Rapidez
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Seleccionar rango de fechas y tipo de reporte
+    Sistema->>BaseDatos: Procesar datos para el reporte
+    BaseDatos-->>Sistema: Datos procesados en menos de 5 segundos
+    Sistema-->>Administrador: Mostrar reporte generado
+```
+Exportación Segura
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Exportar reporte en formato PDF o Excel
+    Sistema->>BaseDatos: Generar archivo con datos cifrados
+    BaseDatos-->>Sistema: Confirmación de archivo seguro
+    Sistema-->>Administrador: Descargar archivo cifrado
+```
 _____
 HU-08
 _____
