@@ -619,6 +619,89 @@ sequenceDiagram
     Docente->>Sistema: Acceder desde un dispositivo (PC, móvil, tableta)
     Sistema-->>Docente: Mostrar funcionalidad optimizada para el dispositivo utilizado
 ```
+## HU-08
+### CA01: Autenticación de Usuarios
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Sistema
+    participant BaseDatos
+
+    Usuario->>Sistema: Ingresar código universitario
+    Sistema->>BaseDatos: Verificar identidad del usuario
+    BaseDatos-->>Sistema: Confirmación de identidad
+    Sistema-->>Usuario: Acceso permitido
+```
+### CA02: Gestión de Roles
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Configurar roles de usuario
+    Sistema->>BaseDatos: Actualizar asignaciones de roles
+    BaseDatos-->>Sistema: Confirmación de actualización
+    Sistema-->>Administrador: Roles y permisos asignados correctamente
+```
+### CA03: Restricción de Accesos No Autorizados
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Sistema
+    participant BaseDatos
+
+    Usuario->>Sistema: Intentar reservar recurso restringido
+    Sistema->>BaseDatos: Verificar permisos del usuario
+    BaseDatos-->>Sistema: Acceso denegado (sin permisos)
+    Sistema-->>Usuario: Bloquear acción y notificar
+```
+### CA04: Asignación de Permisos Especiales
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Otorgar permisos adicionales a un usuario
+    Sistema->>BaseDatos: Actualizar permisos del usuario
+    BaseDatos-->>Sistema: Confirmación de actualización
+    Sistema-->>Administrador: Permisos reflejados de inmediato
+```
+### CA05: Revocación de Permisos
+```mermaid
+sequenceDiagram
+    participant Administrador
+    participant Sistema
+    participant BaseDatos
+
+    Administrador->>Sistema: Eliminar permisos de un usuario
+    Sistema->>BaseDatos: Revocar acceso del usuario
+    BaseDatos-->>Sistema: Confirmación de revocación
+    Sistema-->>Administrador: Acceso restringido correctamente
+```
+### Criterios de Aceptación No Funcionales
+
+#### Seguridad
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Sistema
+
+    Usuario->>Sistema: Ingresar credenciales
+    Sistema->>Sistema: Cifrar datos sensibles en tránsito y reposo
+    Sistema-->>Usuario: Proceso de autenticación seguro
+```
+#### Fiabilidad
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Sistema
+
+    Usuario->>Sistema: Intentar acceder al sistema con credenciales correctas
+    Sistema-->>Usuario: Autenticación exitosa (99.95% tasa de éxito)
+```
+
 ## HU-09
 ### CA01: Reporte por Periodo
 ```mermaid
@@ -632,7 +715,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Datos de ocupación y uso
     Sistema-->>Administrador: Generar y mostrar reporte detallado
 ```
-CA02: Reporte por Recurso
+### CA02: Reporte por Recurso
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -644,7 +727,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Datos históricos del recurso
     Sistema-->>Administrador: Mostrar reporte de uso del recurso
 ```
-CA03: Exportación de Reportes
+### CA03: Exportación de Reportes
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -656,7 +739,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de datos procesados
     Sistema-->>Administrador: Descargar archivo exportado
 ```
-CA04: Visualización Gráfica
+### CA04: Visualización Gráfica
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -668,7 +751,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Datos agregados por hora, día y semana
     Sistema-->>Administrador: Mostrar gráficos junto con el reporte
 ```
-CA05: Comparación entre Periodos
+### CA05: Comparación entre Periodos
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -680,9 +763,9 @@ sequenceDiagram
     BaseDatos-->>Sistema: Datos de los dos periodos seleccionados
     Sistema-->>Administrador: Mostrar reporte comparativo con diferencias de uso
 ```
-Criterios de Aceptación No Funcionales
+### Criterios de Aceptación No Funcionales
 
-Rapidez
+#### Rapidez
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -694,7 +777,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Datos procesados en menos de 5 segundos
     Sistema-->>Administrador: Mostrar reporte generado
 ```
-Exportación Segura
+#### Exportación Segura
 ```mermaid
 sequenceDiagram
     participant Administrador
@@ -706,86 +789,12 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de archivo seguro
     Sistema-->>Administrador: Descargar archivo cifrado
 ```
-_____
-HU-08
-_____
-CA01: Autenticación de Usuarios
-sequenceDiagram
-    participant Usuario
-    participant Sistema
-    participant BaseDatos
 
-    Usuario->>Sistema: Ingresar código universitario
-    Sistema->>BaseDatos: Verificar identidad del usuario
-    BaseDatos-->>Sistema: Confirmación de identidad
-    Sistema-->>Usuario: Acceso permitido
 
-CA02: Gestión de Roles
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
+## HU-10
 
-    Administrador->>Sistema: Configurar roles de usuario
-    Sistema->>BaseDatos: Actualizar asignaciones de roles
-    BaseDatos-->>Sistema: Confirmación de actualización
-    Sistema-->>Administrador: Roles y permisos asignados correctamente
-
-CA03: Restricción de Accesos No Autorizados
-sequenceDiagram
-    participant Usuario
-    participant Sistema
-    participant BaseDatos
-
-    Usuario->>Sistema: Intentar reservar recurso restringido
-    Sistema->>BaseDatos: Verificar permisos del usuario
-    BaseDatos-->>Sistema: Acceso denegado (sin permisos)
-    Sistema-->>Usuario: Bloquear acción y notificar
-
-CA04: Asignación de Permisos Especiales
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Otorgar permisos adicionales a un usuario
-    Sistema->>BaseDatos: Actualizar permisos del usuario
-    BaseDatos-->>Sistema: Confirmación de actualización
-    Sistema-->>Administrador: Permisos reflejados de inmediato
-
-CA05: Revocación de Permisos
-sequenceDiagram
-    participant Administrador
-    participant Sistema
-    participant BaseDatos
-
-    Administrador->>Sistema: Eliminar permisos de un usuario
-    Sistema->>BaseDatos: Revocar acceso del usuario
-    BaseDatos-->>Sistema: Confirmación de revocación
-    Sistema-->>Administrador: Acceso restringido correctamente
-
-Criterios de Aceptación No Funcionales
-
-Seguridad
-sequenceDiagram
-    participant Usuario
-    participant Sistema
-
-    Usuario->>Sistema: Ingresar credenciales
-    Sistema->>Sistema: Cifrar datos sensibles en tránsito y reposo
-    Sistema-->>Usuario: Proceso de autenticación seguro
-
-Fiabilidad
-sequenceDiagram
-    participant Usuario
-    participant Sistema
-
-    Usuario->>Sistema: Intentar acceder al sistema con credenciales correctas
-    Sistema-->>Usuario: Autenticación exitosa (99.95% tasa de éxito)
-_____
-HU-10
-_____
-CA01: Inicio de Sesión con SSO
+### CA01: Inicio de Sesión con SSO
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -796,8 +805,9 @@ sequenceDiagram
     Usuario->>SSO: Autenticación a través de SSO
     SSO-->>Sistema: Confirmación de autenticación
     Sistema-->>Usuario: Acceso permitido
-
-CA02: Sincronización de Datos
+```
+### CA02: Sincronización de Datos
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -807,8 +817,9 @@ sequenceDiagram
     Sistema->>BaseDatos: Sincronizar información del usuario
     BaseDatos-->>Sistema: Confirmación de sincronización
     Sistema-->>Usuario: Acción completada con datos actualizados
-
-CA03: Notificación de Errores de Autenticación
+```
+### CA03: Notificación de Errores de Autenticación
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -818,8 +829,9 @@ sequenceDiagram
     Sistema->>SSO: Verificar cuenta activa
     SSO-->>Sistema: Cuenta no activa
     Sistema-->>Usuario: Notificar error y sugerir pasos para solucionar
-
-CA04: Acceso Simultáneo Restringido
+```
+### CA04: Acceso Simultáneo Restringido
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -829,8 +841,9 @@ sequenceDiagram
     Sistema->>SSO: Verificar autenticación previa
     SSO-->>Sistema: Autenticación ya activa en otro dispositivo
     Sistema-->>Usuario: Impedir acceso simultáneo no permitido
-
-CA05: Desvinculación de Cuentas
+```
+### CA05: Desvinculación de Cuentas
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -840,10 +853,11 @@ sequenceDiagram
     Sistema->>SSO: Procesar desvinculación
     SSO-->>Sistema: Confirmación de desvinculación
     Sistema-->>Usuario: Cuenta desvinculada sin afectar cuenta universitaria
+```
+### Criterios de Aceptación No Funcionales
 
-Criterios de Aceptación No Funcionales
-
-Confiabilidad
+#### Confiabilidad
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -851,8 +865,9 @@ sequenceDiagram
     Usuario->>Sistema: Intentar iniciar sesión con SSO
     Sistema-->>Usuario: Proceso de autenticación
     Note right of Sistema: Garantizar disponibilidad del 99.9%
-
-Compatibilidad
+```
+#### Compatibilidad
+```mermaid
 sequenceDiagram
     participant Usuario
     participant Sistema
@@ -862,4 +877,4 @@ sequenceDiagram
     Sistema->>SSO: Verificar compatibilidad
     SSO-->>Sistema: Autenticación exitosa (compatible)
     Sistema-->>Usuario: Acceso permitido
-
+```
