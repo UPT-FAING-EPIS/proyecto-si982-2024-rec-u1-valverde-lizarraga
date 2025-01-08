@@ -1,8 +1,8 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/LkahOtWs)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17612975)
-# proyecto-formatos-01
+# Sistema de Gestión de Reservas de Aulas y Laboratorios Universitarios
 
-# DIAGRAMA DE CASO DE USO
+## DIAGRAMAs DE CASO DE USO 1-10
 
 ## HU-01
 
@@ -46,7 +46,7 @@
 ![image](https://github.com/user-attachments/assets/4e2d18a0-9b09-416a-aac6-0415313b29f3)
 
 
-# DIAGRAMA DE SECUENCIA
+# DIAGRAMAS DE SECUENCIA 1-10
 ## HU-01
 ### CA01: Visualización de Reservas Activas
 ```mermaid
