@@ -1740,6 +1740,7 @@ graph TB
 ### Diagramas de secuencia
 ```mermaid
 %% CA01: Visualización de Reglamento
+Note over U,I: CA01 - Visualización de Reglamento
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1749,6 +1750,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CA02: Aceptación Obligatoria
+Note over U,I: CA02 - Aceptación Obligatoria
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1758,6 +1760,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CA03: Normativas Específicas por Tipo de Recurso
+Note over U,I: CA03 - Normativas Específicas por Tipo de Recurso
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1768,6 +1771,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CA04: Registro de Aceptación
+Note over U,I: CA04 - Registro de Aceptación
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1778,6 +1782,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CA05: Recordatorio Periódico
+Note over U,I: CA05 - Recordatorio Periódico
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1789,6 +1794,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CANF1: Carga de Ventana de Normativas
+Note over U,I: CANF1 - Carga de Ventana de Normativas
 sequenceDiagram
     actor Usuario
     participant Sistema
@@ -1799,6 +1805,7 @@ sequenceDiagram
 ```
 ```mermaid
 %% CANF2: Registro Encriptado de Aceptación
+Note over U,I: CANF2 - Registro Encriptado de Aceptación
 sequenceDiagram
     actor Usuario
     participant Sistema
