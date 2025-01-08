@@ -4,44 +4,44 @@
 
 ## DIAGRAMAs DE CASO DE USO 1-10
 
-## HU-01
+## HU-01 Visualización de Reservas Personales
 
 ![image](https://github.com/user-attachments/assets/a946874c-5daf-489d-8ec9-74d796457215)
 
-## HU-02
+## HU-02 Notificaciones de Reservas
 
 ![image](https://github.com/user-attachments/assets/25cfb7f0-c976-4e54-ba7c-fb88175257c4)
 
-## HU-03
+## HU-03 Consulta de Disponibilidad de Recursos
 
 ![image](https://github.com/user-attachments/assets/b435ffdf-9fdb-4e40-9ea3-3ea384892c09)
 
-## HU-04
+## HU-04 Reserva de Computadora Específica
 
 ![image](https://github.com/user-attachments/assets/f5ff2e86-089d-49df-8219-ae0d76bba328)
 
-## HU-05
+## HU-05 Reserva de Aula para Clase Práctica
 
 ![image](https://github.com/user-attachments/assets/48373238-8903-4621-87ed-334b4850011d)
 
-## HU-06
+## HU-06 Gestión de Reservas por el Docente
 
 ![image](https://github.com/user-attachments/assets/1d88df42-d04c-4d42-92da-b172a7e43cc1)
 
-## HU-07
+## HU-07 Asignación de Recursos por el Docente
 
 ![image](https://github.com/user-attachments/assets/292b9e8c-2aa9-42f2-95a9-70dcba610bb7)
 
-## HU-08
+## HU-08 Configuración de Permisos de Acceso
 
 ![image](https://github.com/user-attachments/assets/6f650f48-c2f5-46ff-bb87-2b4445bb3a10)
 
-## HU-09
+## HU-09 Generación de Reportes
 
 ![image](https://github.com/user-attachments/assets/3ff7582a-b3a7-48cf-8de1-e80305dd1900)
 
 
-## HU-10
+## HU-10 Integración con Sistema de Autenticación (SSO)
 
 ![image](https://github.com/user-attachments/assets/4e2d18a0-9b09-416a-aac6-0415313b29f3)
 
