@@ -1738,4 +1738,76 @@ graph TB
 
 ```
 ### Diagramas de secuencia
+```mermaid
+%% CA01: Visualización de Reglamento
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Selecciona un recurso para reserva
+    Sistema-->>Usuario: Muestra ventana emergente con normativas aplicables
+    Usuario-->>Usuario: Revisa las normativas
+```
+```mermaid
+%% CA02: Aceptación Obligatoria
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Intenta cerrar la ventana sin marcar aceptación
+    Sistema-->>Usuario: No permite continuar con la reserva y muestra mensaje de error
+
+```
+```mermaid
+%% CA03: Normativas Específicas por Tipo de Recurso
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Selecciona un recurso de un tipo específico
+    Sistema-->>Usuario: Muestra ventana emergente con normativas para el recurso seleccionado
+    Usuario-->>Usuario: Revisa las normativas específicas
+
+```
+```mermaid
+%% CA04: Registro de Aceptación
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Acepta las normativas y completa la reserva
+    Sistema->>Sistema: Registra aceptación con fecha y hora
+    Sistema-->>Usuario: Confirma reserva completada
+
+```
+```mermaid
+%% CA05: Recordatorio Periódico
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Intenta realizar una reserva después de 6 meses
+    Sistema-->>Usuario: Solicita revisar y aceptar las normativas nuevamente
+    Usuario->>Sistema: Revisa y acepta las normativas
+    Sistema->>Sistema: Actualiza registro de aceptación con nueva fecha y hora
+
+```
+```mermaid
+%% CANF1: Carga de Ventana de Normativas
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Selecciona un recurso para reserva
+    Sistema-->>Usuario: Carga ventana de normativas en menos de 1 segundo
+    Usuario-->>Usuario: Interactúa con la ventana
+
+```
+```mermaid
+%% CANF2: Registro Encriptado de Aceptación
+sequenceDiagram
+    actor Usuario
+    participant Sistema
+    Usuario->>Sistema: Acepta las normativas del sistema
+    Sistema->>Sistema: Registra aceptación en la base de datos de forma encriptada
+    Sistema-->>Usuario: Confirma registro exitoso
+    Sistema->>Base de Datos: Mantiene registro por mínimo 2 años
+
+```
+
+
 ## HU-20:
