@@ -1807,7 +1807,6 @@ sequenceDiagram
 sequenceDiagram
     actor Usuario
     participant Sistema
-    Note over U,I: CA03 - Normativas Específicas por Tipo de Recurso
     Usuario->>Sistema: Selecciona un recurso de un tipo específico
     Sistema-->>Usuario: Muestra ventana emergente con normativas para el recurso seleccionado
     Usuario-->>Usuario: Revisa las normativas específicas
