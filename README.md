@@ -47,7 +47,7 @@
 
 
 # DIAGRAMAS DE SECUENCIA 1-10
-## HU-01
+## HU-01 Visualización de Reservas Personales
 ### CA01: Visualización de Reservas Activas
 ```mermaid
 sequenceDiagram
@@ -133,7 +133,7 @@ sequenceDiagram
     Usuario->>Sistema: Navegar por la plataforma
     Sistema-->>Usuario: Interfaz accesible y compatible con lectores de pantalla
 ```
-## HU-02
+## HU-02 Notificaciones de Reservas
 ### CA01: Notificación de Recordatorio
 ```mermaid
 sequenceDiagram
@@ -218,8 +218,8 @@ sequenceDiagram
     Sistema->>Estudiante: Enviar notificación vía SMS
     Sistema->>Estudiante: Enviar notificación vía push
 ```
-## HU-03
-CA01: Búsqueda por Horario
+## HU-03 Consulta de Disponibilidad de Recursos
+### CA01: Búsqueda por Horario
 ```mermaid
 sequenceDiagram
     participant Estudiante
@@ -231,7 +231,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Lista de recursos disponibles
     Sistema-->>Estudiante: Mostrar recursos disponibles
 ```
-CA02: Filtro por Características
+### CA02: Filtro por Características
 ```mermaid
 sequenceDiagram
     participant Estudiante
@@ -302,7 +302,7 @@ sequenceDiagram
     Estudiante->>Sistema: Interactuar con filtros de búsqueda
     Sistema-->>Estudiante: Mostrar opciones de filtros claros e intuitivos
 ```
-## HU-04
+## HU-04 Reserva de Computadora Específica
 ### CA01: Disponibilidad de Computadoras
 ```mermaid
 sequenceDiagram
@@ -396,7 +396,7 @@ sequenceDiagram
     Sistema-->>Estudiante: Confirmar datos protegidos
 ```
 
-## HU-05
+## HU-05 Reserva de Aula para Clase Práctica
 
 ### CA01: Reserva de Aula Disponible
 ```mermaid
@@ -487,7 +487,7 @@ sequenceDiagram
     Sistema-->>Docente: Interfaz completamente funcional en móvil
 ```
 
-## HU-06
+## HU-06 Gestión de Reservas por el Docente
 
 ### CA01: Visualización de Reservas
 ```mermaid
