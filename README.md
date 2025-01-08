@@ -942,7 +942,7 @@ sequenceDiagram
     actor CE as Coordinador Eventos
     participant S as Sistema
     participant BD as Base de Datos
-    
+
     rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA01: Reserva de Aulas
         CE->>S: seleccionarAula(aula)
@@ -952,7 +952,7 @@ sequenceDiagram
         S->>BD: registrarReserva()
         S-->>CE: reservaConfirmada
     end
-    
+
     rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA02: Confirmación de Reserva
         CE->>S: consultarHistorial()
@@ -960,7 +960,7 @@ sequenceDiagram
         BD-->>S: listaReservas
         S-->>CE: mostrarDetallesReserva
     end
-    
+
     rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA03: Conflicto de Reservas
         CE->>S: intentarReserva(aula, fecha)
@@ -968,7 +968,7 @@ sequenceDiagram
         BD-->>S: conflictoDetectado
         S-->>CE: mostrarError("Recurso no disponible")
     end
-    
+
     rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA04: Modificación de Reservas
         CE->>S: editarReserva(id, nuevosDatos)
@@ -977,7 +977,7 @@ sequenceDiagram
         S->>BD: actualizarReserva()
         S-->>CE: modificaciónConfirmada
     end
-    
+
     rect rgb(0, 0, 0, 0)
         Note over CE,BD: CA05: Cancelación de Reservas
         CE->>S: cancelarReserva(id)
@@ -985,6 +985,28 @@ sequenceDiagram
         BD-->>S: reservaEliminada
         S-->>CE: cancelaciónConfirmada
     end
+
+    rect rgb(0, 128, 0, 0.1)
+        Note over CE,BD: CANF01: Registro en menos de 3 segundos
+        CE->>S: confirmarReserva(datos)
+        Note over S,BD: Tiempo máximo: 3 segundos
+        S->>BD: guardarReserva(datos)
+        BD-->>S: registroConfirmado
+        S-->>CE: reservaRegistrada
+    end
+
+    rect rgb(0, 128, 0, 0.1)
+        Note over CE,BD: CANF02: Rendimiento con 100 reservas simultáneas
+        CE->>S: confirmarReservasSimultaneas()
+        loop Hasta 100 solicitudes
+            S->>BD: verificarDisponibilidad()
+            BD-->>S: estadoRecurso
+            S->>BD: guardarReserva()
+        end
+        BD-->>S: reservasProcesadas
+        S-->>CE: reservasConfirmadas
+    end
+
 ```
 ## HU-12: Registro de incidencias de Uso
 
@@ -1049,6 +1071,27 @@ sequenceDiagram
         BD-->>S: historialIncidencias
         S-->>A: mostrarHistorial
     end
+
+    rect rgb(0, 128, 0, 0.1)
+        Note over U,A: CANF01: Notificación en menos de 1 minuto
+        U->>S: registrarIncidencia()
+        S->>BD: guardarIncidencia()
+        BD-->>S: confirmaciónRegistro
+        Note over S: Generar y enviar notificación
+        S->>A: enviarNotificación()
+        A-->>S: notificaciónRecibida
+        Note over S,A: Tiempo máximo: 1 minuto
+    end
+
+    rect rgb(0, 128, 0, 0.1)
+        Note over A,BD: CANF02: Filtro y respuesta en menos de 2 segundos
+        A->>S: aplicarFiltros(filtros)
+        Note over S,BD: Tiempo máximo: 2 segundos
+        S->>BD: obtenerResultados(filtros)
+        BD-->>S: resultadosFiltrados
+        S-->>A: mostrarResultados
+    end
+
 ```
 ## **HU-13: Configuración de Horarios de clase**
 
