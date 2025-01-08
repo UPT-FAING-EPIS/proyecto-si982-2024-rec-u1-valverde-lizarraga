@@ -1738,30 +1738,30 @@ graph TB
 
 ```
 ### Diagramas de secuencia
+#### CA01: Visualización de Reglamento
 ```mermaid
 %% CA01: Visualización de Reglamento
 sequenceDiagram
-    Note over U,I: CA01 - Visualización de Reglamento
     actor Usuario
     participant Sistema
     Usuario->>Sistema: Selecciona un recurso para reserva
     Sistema-->>Usuario: Muestra ventana emergente con normativas aplicables
     Usuario-->>Usuario: Revisa las normativas
 ```
+#### CA02: Aceptación Obligatoria
 ```mermaid
 %% CA02: Aceptación Obligatoria
 sequenceDiagram
-    Note over U,I: CA02 - Aceptación Obligatoria
     actor Usuario
     participant Sistema
     Usuario->>Sistema: Intenta cerrar la ventana sin marcar aceptación
     Sistema-->>Usuario: No permite continuar con la reserva y muestra mensaje de error
 
 ```
+#### CA03: Normativas Específicas por Tipo de Recurso
 ```mermaid
 %% CA03: Normativas Específicas por Tipo de Recurso
 sequenceDiagram
-    Note over U,I: CA04 - Registro de Aceptación
     actor Usuario
     participant Sistema
     Note over U,I: CA03 - Normativas Específicas por Tipo de Recurso
@@ -1770,10 +1770,10 @@ sequenceDiagram
     Usuario-->>Usuario: Revisa las normativas específicas
 
 ```
+#### CA04: Registro de Aceptación
 ```mermaid
 %% CA04: Registro de Aceptación
 sequenceDiagram
-    Note over U,I: CA04 - Registro de Aceptación
     actor Usuario
     participant Sistema
     Usuario->>Sistema: Acepta las normativas y completa la reserva
@@ -1781,10 +1781,10 @@ sequenceDiagram
     Sistema-->>Usuario: Confirma reserva completada
 
 ```
+#### CA05: Recordatorio Periódico
 ```mermaid
 %% CA05: Recordatorio Periódico
 sequenceDiagram
-    Note over U,I: CA05 - Recordatorio Periódico
     actor Usuario
     participant Sistema
     Usuario->>Sistema: Intenta realizar una reserva después de 6 meses
@@ -1793,22 +1793,21 @@ sequenceDiagram
     Sistema->>Sistema: Actualiza registro de aceptación con nueva fecha y hora
 
 ```
+#### CANF1: Carga de Ventana de Normativas
 ```mermaid
 %% CANF1: Carga de Ventana de Normativas
 sequenceDiagram
-    Note over U,I: CANF1 - Carga de Ventana de Normativas
     actor Usuario
     participant Sistema
-    Note over U,I: CANF1 - Carga de Ventana de Normativas
     Usuario->>Sistema: Selecciona un recurso para reserva
     Sistema-->>Usuario: Carga ventana de normativas en menos de 1 segundo
     Usuario-->>Usuario: Interactúa con la ventana
 
 ```
+#### CANF2: Registro Encriptado de Aceptación
 ```mermaid
 %% CANF2: Registro Encriptado de Aceptación
 sequenceDiagram
-    Note over U,I: CANF2 - Registro Encriptado de Aceptación
     actor Usuario
     participant Sistema
     Usuario->>Sistema: Acepta las normativas del sistema
