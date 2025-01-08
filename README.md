@@ -574,7 +574,7 @@ sequenceDiagram
     BaseDatos-->>Sistema: Confirmación de registro
     Sistema-->>Administrador: Acción registrada exitosamente
 ```
-## HU-07
+## HU-07 Asignación de Recursos por el Docente
 
 ### CA01: Asignación de Computadoras Específicas
 ```mermaid
@@ -662,7 +662,7 @@ sequenceDiagram
     Docente->>Sistema: Acceder desde un dispositivo (PC, móvil, tableta)
     Sistema-->>Docente: Mostrar funcionalidad optimizada para el dispositivo utilizado
 ```
-## HU-08
+## HU-08 Configuración de Permisos de Acceso
 ### CA01: Autenticación de Usuarios
 ```mermaid
 sequenceDiagram
@@ -745,7 +745,7 @@ sequenceDiagram
     Sistema-->>Usuario: Autenticación exitosa (99.95% tasa de éxito)
 ```
 
-## HU-09
+## HU-09 Generación de Reportes
 ### CA01: Reporte por Periodo
 ```mermaid
 sequenceDiagram
@@ -834,7 +834,7 @@ sequenceDiagram
 ```
 
 
-## HU-10
+## HU-10 Integración con Sistema de Autenticación (SSO)
 
 ### CA01: Inicio de Sesión con SSO
 ```mermaid
