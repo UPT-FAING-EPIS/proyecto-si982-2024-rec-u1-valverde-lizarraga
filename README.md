@@ -1816,6 +1816,135 @@ sequenceDiagram
     Sistema->>Base de Datos: Mantiene registro por mínimo 2 años
 
 ```
+## **HU-20: Evaluación y Retroalimentación sobre Recursos Reservados**
 
+### Diagrama de caso de uso
 
-## HU-20:
+```mermaid
+graph TB
+    subgraph "HU-21: Evaluación y Retroalimentación sobre Recursos Reservados"
+        direction TB
+        
+        %% Actores
+        User((Usuario))
+        Admin((Administrador))
+        System((Sistema))
+        
+        %% Casos de Uso
+        UC1[Registrar Evaluación]
+        UC2[Visualizar Evaluaciones]
+        UC3[Filtrar Evaluaciones]
+        UC4[Notificar Evaluación Baja]
+        UC5[Registrar Cambios]
+
+        %% Relaciones
+        User --> UC1
+        Admin --> UC2
+        Admin --> UC3
+        Admin --> UC5
+        UC4 --> Admin
+        
+        UC1 --> System
+        UC2 --> System
+        UC3 --> System
+        UC4 --> System
+        UC5 --> System
+    end
+
+```
+### Diagramas de secuencia:
+```mermaid
+sequenceDiagram
+    actor U as Usuario
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CA01: Registro de Evaluaciones
+    U->>S: Accede a la sección de evaluaciones
+    U->>S: Ingresa calificación y comentario
+    S->>BD: Guarda evaluación
+    BD-->>S: Confirmación de registro
+    S-->>U: Muestra mensaje de éxito
+```
+```mermaid
+sequenceDiagram
+    actor A as Administrador
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over A,BD: CA02: Visualización de Evaluaciones
+    A->>S: Solicita ver todas las evaluaciones
+    S->>BD: Recupera evaluaciones almacenadas
+    BD-->>S: Retorna lista de evaluaciones
+    S-->>A: Muestra evaluaciones detalladas
+```
+```mermaid
+sequenceDiagram
+    actor U as Usuario
+    participant S as Sistema
+    participant BD as Base de Datos
+    participant E as Sistema de Notificaciones
+    
+    Note over U,E: CA03: Notificación Automática
+    U->>S: Ingresa evaluación con calificación < 3
+    S->>BD: Guarda evaluación
+    BD-->>S: Confirmación de registro
+    S->>E: Genera alerta para el administrador
+    E->>A: Envía notificación de evaluación baja
+
+```
+```mermaid
+sequenceDiagram
+    actor A as Administrador
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over A,BD: CA04: Filtro de Evaluaciones
+    A->>S: Solicita evaluaciones filtradas por recurso
+    S->>BD: Aplica filtro en base de datos
+    BD-->>S: Retorna evaluaciones filtradas
+    S-->>A: Muestra resultados del filtro
+
+```
+```mermaid
+sequenceDiagram
+    actor A as Administrador
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over A,BD: CA05: Registro de Cambios
+    A->>S: Marca evaluación como "Resuelta"
+    S->>BD: Actualiza estado de la evaluación
+    BD-->>S: Confirmación de actualización
+    S-->>A: Muestra registro actualizado
+
+```
+```mermaid
+sequenceDiagram
+    actor U as Usuario
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over U,BD: CANF01: Tiempo de Respuesta
+    U->>S: Ingresa evaluación
+    Note over S,BD: Tiempo máximo: 2 segundos
+    S->>BD: Guarda evaluación
+    BD-->>S: Confirmación de registro
+    S-->>U: Muestra mensaje de éxito
+
+```
+```mermaid
+sequenceDiagram
+    actor A as Administrador
+    participant S as Sistema
+    participant BD as Base de Datos
+    
+    Note over A,BD: CANF02: Acceso Concurrente
+    A->>S: Solicita múltiples evaluaciones simultáneamente
+    Note over S,BD: Manejo de hasta 50 solicitudes
+    S->>BD: Recupera datos de todas las solicitudes
+    BD-->>S: Retorna evaluaciones
+    S-->>A: Muestra resultados sin degradación
+
+```
+
