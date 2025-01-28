@@ -1,6 +1,6 @@
-using GestionReservasWebII.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using GestionReservasWebII.Models;
 
 namespace GestionReservasWebII.Controllers
 {
@@ -18,9 +18,24 @@ namespace GestionReservasWebII.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult RedirigirPorRol(string role)
         {
-            return View();
+            if (role == "Estudiante")
+            {
+                return RedirectToAction("DashboardUsuario", "Usuario");
+            }
+            else if (role == "Docente")
+            {
+                return RedirectToAction("DashboardDocente", "Docente");
+            }
+            else if (role == "Administrador")
+            {
+                return RedirectToAction("DashboardAdministrador", "Administrador");
+            }
+
+            TempData["Error"] = "Por favor, selecciona un rol válido.";
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

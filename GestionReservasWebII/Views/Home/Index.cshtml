@@ -197,11 +197,11 @@
                 const selectedRole = document.querySelector('.checkbox-group input:checked')?.value;
 
                 if (selectedRole === 'student') {
-                    window.location.href = '/Usuario/dashboardUsuario.cshtml';
+                    window.location.href = '/Usuario/DashboardUsuario.cshtml';
                 } else if (selectedRole === 'teacher') {
-                    window.location.href = '/Docente/dashboardDocente.cshtml';
+                    window.location.href = '/Docente/DashboardDocente.cshtml';
                 } else if (selectedRole === 'admin') {
-                    window.location.href = '/Usuario/dashboardAdministrador.cshtml';
+                    window.location.href = '/Usuario/DashboardAdministrador.cshtml';
                 } else {
                     alert('Por favor, selecciona un rol antes de continuar.');
                 }
@@ -211,7 +211,7 @@
 
 </head>
 <body>
-    <img src="../images/fondo.png">
+    <img src="~/images/fondo.png" alt="Logo de la Universidad"">
     <div class="login-container">
 
         <!-- Left Section -->

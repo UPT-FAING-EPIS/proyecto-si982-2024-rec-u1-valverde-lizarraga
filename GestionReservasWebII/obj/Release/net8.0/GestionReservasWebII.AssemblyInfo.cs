@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-GestionReservasWebII-57c9c2db-9825-45c5-afe9-149c969cd5e5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionReservasWebII")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6db430a5acc1d930da0b276df4bba5665cf3a1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionReservasWebII")]
