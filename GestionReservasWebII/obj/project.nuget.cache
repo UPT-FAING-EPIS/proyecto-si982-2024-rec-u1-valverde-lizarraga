@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8NUCFXCpotU=",
+  "dgSpecHash": "yoT+F+2wUys=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jean_\\source\\repos\\GestionReservasWebII\\GestionReservasWebII\\GestionReservasWebII.csproj",
+  "projectFilePath": "C:\\Users\\Jean_\\proyecto-si982-2024-rec-u1-valverde-lizarraga\\GestionReservasWebII\\GestionReservasWebII.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jean_\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Jean_\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

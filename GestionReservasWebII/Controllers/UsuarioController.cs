@@ -11,5 +11,15 @@ namespace GestionReservasWebII.Controllers
         {
             return View();
         }
+
+        public IActionResult DocenteDashboard()
+        {
+            return View();
+        }
+
+        public IActionResult DashboardAdministrador()
+        {
+            return View();
+        }
     }
 }

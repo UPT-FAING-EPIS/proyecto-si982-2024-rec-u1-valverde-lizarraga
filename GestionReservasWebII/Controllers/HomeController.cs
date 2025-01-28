@@ -6,42 +6,26 @@ namespace GestionReservasWebII.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult RedirigirPorRol(string role)
+        public IActionResult Index(string role)
         {
-            if (role == "Estudiante")
+            switch (role)
             {
-                return RedirectToAction("DashboardUsuario", "Usuario");
+                case "student":
+                    return RedirectToAction("DashboardUsuario", "Usuario");
+                case "teacher":
+                    return RedirectToAction("DocenteDashboard", "Usuario");
+                case "admin":
+                    return RedirectToAction("DashboardAdministrador", "Usuario");
+                default:
+                    return View();
             }
-            else if (role == "Docente")
-            {
-                return RedirectToAction("DashboardDocente", "Docente");
-            }
-            else if (role == "Administrador")
-            {
-                return RedirectToAction("DashboardAdministrador", "Administrador");
-            }
-
-            TempData["Error"] = "Por favor, selecciona un rol válido.";
-            return RedirectToAction("Index");
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

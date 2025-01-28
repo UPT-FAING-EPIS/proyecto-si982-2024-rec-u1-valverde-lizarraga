@@ -4646,11 +4646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jean_\\source\\repos\\GestionReservasWebII\\GestionReservasWebII\\GestionReservasWebII.csproj",
+      "projectUniqueName": "C:\\Users\\Jean_\\proyecto-si982-2024-rec-u1-valverde-lizarraga\\GestionReservasWebII\\GestionReservasWebII.csproj",
       "projectName": "GestionReservasWebII",
-      "projectPath": "C:\\Users\\Jean_\\source\\repos\\GestionReservasWebII\\GestionReservasWebII\\GestionReservasWebII.csproj",
+      "projectPath": "C:\\Users\\Jean_\\proyecto-si982-2024-rec-u1-valverde-lizarraga\\GestionReservasWebII\\GestionReservasWebII.csproj",
       "packagesPath": "C:\\Users\\Jean_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jean_\\source\\repos\\GestionReservasWebII\\GestionReservasWebII\\obj\\",
+      "outputPath": "C:\\Users\\Jean_\\proyecto-si982-2024-rec-u1-valverde-lizarraga\\GestionReservasWebII\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
