@@ -20,7 +20,7 @@ namespace GestionReservasWebII.Controllers
                 case "student":
                     return RedirectToAction("DashboardUsuario", "Usuario");
                 case "teacher":
-                    return RedirectToAction("DocenteDashboard", "Usuario");
+                    return RedirectToAction("DashboardDocente", "Usuario");
                 case "admin":
                     return RedirectToAction("DashboardAdministrador", "Usuario");
                 default:
